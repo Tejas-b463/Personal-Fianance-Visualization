@@ -21,7 +21,7 @@ const TransactionList = ({ transactions, onTransactionUpdated, onTransactionDele
       const updatedTransactions = validTransactions.filter(tx => tx._id !== id);
       localStorage.setItem('transactions', JSON.stringify(updatedTransactions));
 
-      toast.success('Transaction deleted successfully');
+      toast.error('Transaction deleted successfully');
     } catch (error) {
       toast.error('Error deleting transaction');
     }
@@ -31,8 +31,9 @@ const TransactionList = ({ transactions, onTransactionUpdated, onTransactionDele
     e.preventDefault();
     try {
       const { amount, description, date, category } = editingTransaction;
+      const backendUrl = import.meta.env.VITE_BACKEND_URL
       const response = await axios.put(
-        `http://localhost:5001/api/transactions/${editingTransaction._id}`,
+        `${backendUrl}/api/transactions/${editingTransaction._id}`,
         { amount, description, date, category }
       );
       onTransactionUpdated(response.data);

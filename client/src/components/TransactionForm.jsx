@@ -36,10 +36,13 @@ const TransactionForm = ({ onTransactionAdded }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const toastId = toast.loading('Adding transaction...');
+
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL
+      const backendUrl = import.meta.env.VITE_BACKEND_URL;
       const response = await axios.post(`${backendUrl}/api/transactions`, formData);
-      toast.success('Transaction added successfully!');
+
+      toast.success('Transaction added successfully!', { id: toastId });
       onTransactionAdded(response.data);
       setFormData({
         amount: '',
@@ -48,7 +51,7 @@ const TransactionForm = ({ onTransactionAdded }) => {
         category: '',
       });
     } catch (error) {
-      toast.error('Error adding transaction!');
+      toast.error('Error adding transaction!', { id: toastId });
     }
   };
 
@@ -56,7 +59,6 @@ const TransactionForm = ({ onTransactionAdded }) => {
     <div className="max-w-xl mx-auto p-6 bg-white rounded-md shadow-xs">
       <h2 className="text-xl font-semibold mb-4">Add Transaction</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700">Amount</label>

@@ -5,32 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Personal Finance Visualization</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                },
-            },
-            corePlugins: {
-                preflight: true,
-            },
-            variants: {
-                extend: {
-                    display: ['responsive'],
-                    flexDirection: ['responsive'],
-                    gridTemplateColumns: ['responsive'],
-                    padding: ['responsive'],
-                    margin: ['responsive'],
-                    backgroundColor: ['responsive'],
-                    textAlign: ['responsive'],
-                },
-            },
-        };
-    </script>
+
     <!-- Import Inter font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -40,7 +15,7 @@
     </style>
 </head>
 
-<body class="min-h-screen bg-slate-200">
+<body class="min-h-screen bg-gray-100">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
 </body>

@@ -10,7 +10,7 @@ import axios from 'axios';
 const App = () => {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null); // Track error state
+  const [error, setError] = useState(null); 
 
   useEffect(() => {
     const fetchTransactions = async () => {
@@ -32,16 +32,6 @@ const App = () => {
 
   const handleTransactionAdded = (newTx) => {
     setTransactions((prev) => [...prev, newTx]);
-  };
-
-  const handleTransactionUpdated = (updatedTx) => {
-    setTransactions((prev) =>
-      prev.map((tx) => (tx._id === updatedTx._id ? updatedTx : tx))
-    );
-  };
-
-  const handleTransactionDeleted = (id) => {
-    setTransactions((prev) => prev.filter((tx) => tx._id !== id));
   };
 
   if (loading) return <ShimmerUI />;
